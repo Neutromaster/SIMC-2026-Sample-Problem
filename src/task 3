@@ -1,5 +1,0 @@
-from sklearn.cluster import KMeans
-from main import task2_similarity_matrix
-kmeans = KMeans(n_clusters=5, random_state=35, n_init="k-means++").fit(task2_similarity_matrix)
-print(kmeans.cluster_centers_)
-
