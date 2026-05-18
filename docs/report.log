@@ -1,7 +1,6 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.13)  18 MAY 2026 15:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.13)  18 MAY 2026 16:42
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
 **./report.tex
 (report.tex
@@ -1047,7 +1046,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@toc=\write5
 \openout5 = `report.toc'.
 
-<../data/output/task1/task1_design_matrix.png, id=237, 803.28105pt x 658.74104p
+<../data/output/task1/task1_design_matrix.png, id=282, 803.28105pt x 658.74104p
 t>
 File: ../data/output/task1/task1_design_matrix.png Graphic file (type png)
 <use ../data/output/task1/task1_design_matrix.png>
@@ -1055,7 +1054,7 @@ Package pdftex.def Info: ../data/output/task1/task1_design_matrix.png  used on
 input line 113.
 (pdftex.def)             Requested size: 430.31812pt x 352.90042pt.
  [2] [3 <../data/output/task1/task1_design_matrix.png>]
-<../data/output/task2/task2_similarity_matrix.png, id=260, 875.55106pt x 586.47
+<../data/output/task2/task2_similarity_matrix.png, id=304, 875.55106pt x 586.47
 105pt>
 File: ../data/output/task2/task2_similarity_matrix.png Graphic file (type png)
 <use ../data/output/task2/task2_similarity_matrix.png>
@@ -1072,45 +1071,45 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 196.
 
 [4 <../data/output/task2/task2_similarity_matrix.png>]
-<../data/output/task3/task3_similarity_K03.png, id=271, 875.55106pt x 586.47105
+<../data/output/task3/task3_similarity_K03.png, id=314, 875.55106pt x 586.47105
 pt>
 File: ../data/output/task3/task3_similarity_K03.png Graphic file (type png)
 <use ../data/output/task3/task3_similarity_K03.png>
 Package pdftex.def Info: ../data/output/task3/task3_similarity_K03.png  used on
  input line 220.
 (pdftex.def)             Requested size: 144.95303pt x 97.0857pt.
-<../data/output/task3/task3_similarity_K12.png, id=272, 875.55106pt x 586.47105
+<../data/output/task3/task3_similarity_K12.png, id=315, 875.55106pt x 586.47105
 pt>
 File: ../data/output/task3/task3_similarity_K12.png Graphic file (type png)
 <use ../data/output/task3/task3_similarity_K12.png>
 Package pdftex.def Info: ../data/output/task3/task3_similarity_K12.png  used on
  input line 224.
 (pdftex.def)             Requested size: 144.95303pt x 97.0857pt.
-<../data/output/task3/task3_similarity_K40.png, id=273, 875.55106pt x 586.47105
+<../data/output/task3/task3_similarity_K40.png, id=316, 875.55106pt x 586.47105
 pt>
 File: ../data/output/task3/task3_similarity_K40.png Graphic file (type png)
 <use ../data/output/task3/task3_similarity_K40.png>
 Package pdftex.def Info: ../data/output/task3/task3_similarity_K40.png  used on
  input line 228.
 (pdftex.def)             Requested size: 144.95303pt x 97.0857pt.
-<../data/output/task3/task3_silhouette_curve.png, id=277, 586.47105pt x 333.526
+ [5 <../data/output/task3/task3_similarity_K03.png> <../data/output/task3/task3
+_similarity_K12.png> <../data/output/task3/task3_similarity_K40.png>]
+<../data/output/task3/task3_silhouette_curve.png, id=332, 586.47105pt x 333.526
 05pt>
 File: ../data/output/task3/task3_silhouette_curve.png Graphic file (type png)
 <use ../data/output/task3/task3_silhouette_curve.png>
 Package pdftex.def Info: ../data/output/task3/task3_silhouette_curve.png  used 
 on input line 302.
 (pdftex.def)             Requested size: 249.13371pt x 141.67798pt.
-<../data/output/task3/similarity_best_task3.png, id=278, 875.55106pt x 586.4710
+<../data/output/task3/similarity_best_task3.png, id=333, 875.55106pt x 586.4710
 5pt>
 File: ../data/output/task3/similarity_best_task3.png Graphic file (type png)
 <use ../data/output/task3/similarity_best_task3.png>
 Package pdftex.def Info: ../data/output/task3/similarity_best_task3.png  used o
 n input line 305.
 (pdftex.def)             Requested size: 190.24568pt x 127.43114pt.
- [5 <../data/output/task3/task3_similarity_K03.png> <../data/output/task3/task3
-_similarity_K12.png> <../data/output/task3/task3_similarity_K40.png>] [6 <../da
-ta/output/task3/task3_silhouette_curve.png> <../data/output/task3/similarity_be
-st_task3.png>] [7]
+ [6 <../data/output/task3/task3_silhouette_curve.png> <../data/output/task3/sim
+ilarity_best_task3.png>] [7]
 [8]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -1124,6 +1123,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 532.
 
+[9]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 557.
@@ -1136,7 +1136,6 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 557.
 
-[9]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 579.
@@ -1174,7 +1173,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 718.
 
-<../data/output/task6/task6_convergence_N100_p05.png, id=378, 622.60605pt x 369
+<../data/output/task6/task6_convergence_N100_p05.png, id=418, 622.60605pt x 369
 .66106pt>
 File: ../data/output/task6/task6_convergence_N100_p05.png Graphic file (type pn
 g)
@@ -1190,7 +1189,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 759.
 
-<../data/output/task6/task6_grid_validation.png, id=380, 947.82104pt x 384.1150
+<../data/output/task6/task6_grid_validation.png, id=420, 947.82104pt x 384.1150
 5pt>
 File: ../data/output/task6/task6_grid_validation.png Graphic file (type png)
 <use ../data/output/task6/task6_grid_validation.png>
@@ -1205,8 +1204,8 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 783.
 
-[12 <../data/output/task6/task6_convergence_N100_p05.png>]
-<../data/output/task6/task6_distribution_N100_p05.png, id=393, 767.14606pt x 41
+[12]
+<../data/output/task6/task6_distribution_N100_p05.png, id=438, 767.14606pt x 41
 3.02306pt>
 File: ../data/output/task6/task6_distribution_N100_p05.png Graphic file (type p
 ng)
@@ -1223,23 +1222,53 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 837.
 
-[13 <../data/output/task6/task6_grid_validation.png>] [14 <../data/output/task6
-/task6_distribution_N100_p05.png>] [15] (report.aux)
+[13 <../data/output/task6/task6_convergence_N100_p05.png>] [14 <../data/output/
+task6/task6_grid_validation.png>]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 915.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 915.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 935.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 935.
+
+[15 <../data/output/task6/task6_distribution_N100_p05.png>] [16]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1111.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1111.
+
+[17] [18] (report.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: A8A7A0EDDC64EC5DC50458434561F257;8598.
+(rerunfilecheck)             Checksum: BE439263609D803A70D0E67ADA0A335A;10879.
  ) 
 Here is how much of TeX's memory you used:
- 34141 strings out of 467871
- 735224 string characters out of 5418860
- 1124725 words of memory out of 5000000
- 62426 multiletter control sequences out of 15000+600000
+ 34210 strings out of 467871
+ 736183 string characters out of 5418860
+ 1126710 words of memory out of 5000000
+ 62463 multiletter control sequences out of 15000+600000
  646691 words of font info for 109 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,12n,108p,545b,1269s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,13n,108p,545b,1422s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1
 095.pk><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
 /cm/cmbx10.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/
@@ -1265,9 +1294,9 @@ AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Use
 rs/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam1
 0.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
 symbols/msbm10.pfb>
-Output written on report.pdf (15 pages, 1810256 bytes).
+Output written on report.pdf (18 pages, 1845689 bytes).
 PDF statistics:
- 542 PDF objects out of 1000 (max. 8388607)
- 111 named destinations out of 1000 (max. 500000)
- 487 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 640 PDF objects out of 1000 (max. 8388607)
+ 143 named destinations out of 1000 (max. 500000)
+ 559 words of extra memory for PDF output out of 10000 (max. 10000000)
 
