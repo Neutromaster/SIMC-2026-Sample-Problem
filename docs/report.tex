@@ -689,4 +689,292 @@ difficulties $p_j$ must be estimated column-wise.
         Tasks~6--7.
 \end{itemize}
 
+% ==================================================================
+\section{Task 7 -- The Null Distribution of $S$ via the
+                    Central Limit Theorem}
+% ==================================================================
+
+\subsection{From two moments to a full distribution}
+Task~5 handed us the mean $\langle S\rangle$ and standard deviation
+$\sigma_N$ of the similarity score under the null hypothesis of
+independent test-takers. Those two numbers already let us make
+informal $z$-score statements (Sec.~5.8), but they are not enough to
+attach a calibrated probability to an observed value of $S$. For that
+we need the full \emph{shape} of the null distribution, i.e.\ the
+function
+\begin{equation}
+  \Pr[\,S = s\,]
+  \qquad\text{for every allowed }s\in\{-N,-N+2,\ldots,N\}.
+  \label{eq:goalT7}
+\end{equation}
+Task~7 derives Eq.~\eqref{eq:goalT7} in closed form by recognising
+that $S$ is a sum of $N$ independent, bounded contributions and
+invoking the central limit theorem (CLT).
+
+\subsection{Why $S$ is a textbook CLT candidate}
+Recall from Eq.~\eqref{eq:Ssum} that the similarity score is the sum
+\begin{equation}
+  S \;=\; \sum_{k=1}^{N} Y_k,
+  \qquad
+  Y_k \;=\; X_{ik}\,X_{jk}\;\in\;\{-1,+1\},
+  \label{eq:Srecall}
+\end{equation}
+of $N$ per-question agreement indicators. The CLT says: a sum of
+many independent, identically distributed (i.i.d.) random variables
+with finite variance is approximately Gaussian, regardless of the
+distribution of the individual terms. Three conditions matter, and
+each holds in our setup:
+
+\begin{insight}[Verifying the Lindeberg--Lévy CLT conditions]
+\begin{enumerate}[leftmargin=2em,label=(\roman*),nosep]
+  \item \textbf{Independence.} The null model
+        (Eq.~\eqref{eq:null}) declares the $X_{ik}$ independent across
+        $k$. Independence is preserved under products of
+        non-overlapping factors, so
+        $Y_k = X_{ik}X_{jk}$ are independent across $k$ as well.
+  \item \textbf{Identically distributed.} In the homogeneous-test
+        setting of Task~5, every question shares the same difficulty
+        $p$, so every $Y_k$ shares the same two-point distribution
+        $\bigl(\Pr[Y_k=+1],\Pr[Y_k=-1]\bigr) = \bigl(p^2+(1-p)^2,\,2p(1-p)\bigr)$.
+  \item \textbf{Finite variance.} From Eq.~\eqref{eq:VarY},
+        $\Var(Y_k) = 1 - (2p-1)^4 \leq 1 < \infty$, since
+        $(2p-1)^4 \in [0,1]$ for $p\in[0,1]$.
+\end{enumerate}
+All three conditions are satisfied. The classical Lindeberg--Lévy
+CLT therefore applies.
+\end{insight}
+
+\subsection{Statement of the limit theorem}
+Let $Y_1,\ldots,Y_N$ be i.i.d.\ with mean
+$\mu_Y \equiv \Exp[Y_k] = (2p-1)^2$ and variance
+$\sigma_Y^2 \equiv \Var(Y_k) = 1-(2p-1)^4$. The Lindeberg--Lévy CLT
+states
+\begin{equation}
+  Z_N
+  \;\equiv\;
+  \frac{S - N\mu_Y}{\sigma_Y\sqrt{N}}
+  \;\xrightarrow{\;d\;}\;
+  \mathcal{N}(0,1)
+  \qquad\text{as }N\to\infty,
+  \label{eq:clt}
+\end{equation}
+where $\xrightarrow{d}$ denotes convergence in distribution.
+Equivalently, in the original scale,
+\begin{equation}
+  S \;\xrightarrow{\;d\;}\;
+  \mathcal{N}\!\Bigl(N(2p-1)^2,\;\;N\bigl[1-(2p-1)^4\bigr]\Bigr).
+  \label{eq:Sasymp}
+\end{equation}
+For finite $N$, Eq.~\eqref{eq:Sasymp} is an \emph{approximation} whose
+accuracy improves with $N$. For our parameters ($N=25$ in
+\texttt{sample\_small}, $N=50$ in \texttt{sample\_larger}) the
+Berry--Esseen bound predicts a Kolmogorov distance to the limiting
+Gaussian of $\mathcal{O}(1/\sqrt{N}) \lesssim 0.2$ in the worst case
+and substantially better in the bulk -- adequate for tail tests at
+the level we care about, and verified empirically against Task~6
+Monte Carlo.
+
+\subsection{From the Gaussian density to a probability mass}
+\label{sec:lattice}
+The CLT in Eq.~\eqref{eq:Sasymp} gives a \emph{continuous} density
+\begin{equation}
+  \varphi(s)
+  \;=\;
+  \frac{1}{\sqrt{2\pi\,\sigma_N^2}}\;
+  \exp\!\left[-\frac{(s - \langle S\rangle)^2}{2\sigma_N^2}\right],
+  \label{eq:phi}
+\end{equation}
+but $S$ is discrete. Two structural facts about the lattice on which
+$S$ lives turn $\varphi(s)$ into the probability mass we actually
+want:
+\begin{itemize}[leftmargin=2em,nosep]
+  \item \textbf{Parity.} Each $Y_k \in \{-1,+1\}$ changes $S$ by $\pm 1$
+        relative to $-N$ (its minimum), so $S + N$ is always even and
+        therefore $S$ has the same parity as $N$.
+  \item \textbf{Spacing.} Flipping a single $Y_k$ from $+1$ to $-1$
+        changes $S$ by exactly $2$. Consecutive allowed values of $S$
+        are separated by $\Delta s = 2$, never by $1$.
+\end{itemize}
+The probability of landing on a specific allowed value $s$ is the
+density times the lattice spacing:
+\begin{equation}
+  \Pr[\,S = s\,] \;\approx\; \varphi(s)\cdot\Delta s
+                       \;=\; 2\,\varphi(s).
+  \label{eq:lattice}
+\end{equation}
+For tail probabilities (which is what we will use in the hypothesis
+test), the discrete-to-continuous correction is handled by a
+half-spacing shift,
+\begin{equation}
+  \Pr[\,S \geq s\,]
+  \;\approx\;
+  1 - \Phi\!\left(\frac{(s-1) - \langle S\rangle}{\sigma_N}\right),
+  \label{eq:continuity}
+\end{equation}
+where $\Phi(\cdot)$ is the standard normal CDF and $s-1$ implements
+the standard continuity correction at the lattice spacing of $2$
+(half-step $= 1$).
+
+\subsection{Closed-form null distribution}
+Combining Eqs.~\eqref{eq:phi}--\eqref{eq:lattice} with the Task~5
+moments gives the final pointwise distribution.
+
+\begin{keyresult}[Null distribution of $S$ (homogeneous $p$)]
+For two independent students answering $N$ questions, each with
+common difficulty $p$,
+\begin{equation}
+  \boxed{\;
+  \Pr[\,S=s\,]
+  \;\approx\;
+  \frac{2}{\sqrt{2\pi\,N\bigl[1-(2p-1)^4\bigr]}}\;
+  \exp\!\left[
+    -\,\frac{\bigl(s - N(2p-1)^2\bigr)^2}
+            {2\,N\bigl[1-(2p-1)^4\bigr]}
+  \right],
+  \;}
+  \label{eq:T7-mass}
+\end{equation}
+on the lattice $s\in\{-N,-N+2,\ldots,N-2,N\}$. The corresponding
+upper-tail probability is
+\begin{equation}
+  \boxed{\;
+  \Pr[\,S \geq s_{\text{obs}}\,]
+  \;\approx\;
+  1 - \Phi\!\left(
+    \frac{s_{\text{obs}} - 1 - N(2p-1)^2}
+         {\sqrt{N\bigl[1-(2p-1)^4\bigr]}}
+  \right).
+  \;}
+  \label{eq:T7-tail}
+\end{equation}
+\end{keyresult}
+
+\subsection{Sanity checks at the extremes}
+The closed form in Eq.~\eqref{eq:T7-mass} reduces correctly in every
+limit Task~5 already covered, plus one new shape-level check.
+
+\begin{table}[htb]
+  \centering
+  \begin{tabular}{c c c l}
+    \toprule
+    regime & $\langle S\rangle$ & $\sigma_N^2$ &
+        shape of $\Pr[S=s]$ \\
+    \midrule
+    $p = \tfrac12$ & $0$ & $N$ &
+        symmetric Gaussian on $\pm 1$ random walk \\
+    $p\to 0$ or $p\to 1$ & $N$ & $0$ &
+        Dirac mass at $s=N$ (Gaussian collapses) \\
+    $N\to\infty$ at fixed $p$ & $\sim N(2p-1)^2$ & $\sim N$ &
+        relative width $\sigma_N/\langle S\rangle = \mathcal{O}(N^{-1/2})$ \\
+    \bottomrule
+  \end{tabular}
+  \caption{Limiting behaviour of the null distribution
+  Eq.~\eqref{eq:T7-mass}.}
+  \label{tab:T7-limits}
+\end{table}
+
+\begin{insight}[The $p\to\tfrac12$ recovery is a textbook check]
+At $p=\tfrac12$, Eq.~\eqref{eq:T7-mass} simplifies to
+\begin{equation}
+  \Pr[\,S=s\,]\bigl|_{p=1/2}
+  \;\approx\;
+  \frac{2}{\sqrt{2\pi N}}\exp\!\left[-\frac{s^2}{2N}\right],
+\end{equation}
+which is exactly the de~Moivre--Laplace approximation to the
+$\pm 1$ random-walk endpoint distribution after $N$ steps. The
+random-walk limit was a known result \emph{before} we did any of
+this; recovering it from a parameter-dependent derivation is the
+classical sanity check.
+\end{insight}
+
+\subsection{Sharpening the $(5,10)$ verdict}
+\label{sec:T7-510}
+We can now upgrade Task~5's informal ``$\sim 5\sigma_N$'' statement
+into a calibrated $p$-value. For \texttt{sample\_small} we use the
+pooled difficulty estimate $\hat p \approx 0.558$ and $N=25$, so
+\begin{align}
+  \langle S\rangle  &\;\approx\; 25\,(2(0.558)-1)^2 \;\approx\; 0.336,\\
+  \sigma_N          &\;\approx\; \sqrt{25\bigl[1-(0.116)^4\bigr]}
+                      \;\approx\; 5.000.
+\end{align}
+The observed pair has $s_{\text{obs}} = 25 = N$. Plugging into the
+continuity-corrected tail formula Eq.~\eqref{eq:T7-tail}:
+\begin{equation}
+  \Pr[\,S \geq 25\,]
+  \;\approx\;
+  1 - \Phi\!\left(\frac{25 - 1 - 0.336}{5.000}\right)
+  \;=\; 1 - \Phi(4.733)
+  \;\approx\; 1.10\times 10^{-6}.
+  \label{eq:pval-510}
+\end{equation}
+
+\paragraph{Correcting for multiple comparisons.} We are not testing a
+\emph{prespecified} pair; we are scanning all $\binom{M}{2} = 1225$
+off-diagonal entries of $\Sm$ and picking the largest. A na\"ive
+Bonferroni correction inflates the $p$-value by a factor of $1225$:
+\begin{equation}
+  p_{\text{Bonferroni}}
+  \;\approx\; 1225 \cdot 1.10\times 10^{-6}
+  \;\approx\; 1.35\times 10^{-3}.
+  \label{eq:bonf}
+\end{equation}
+
+\begin{keyresult}[Conviction-grade evidence against (5, 10)]
+Even after the most conservative correction for scanning $1225$
+candidate pairs, the probability that two \emph{honest} students would
+achieve $S \geq 25$ on a $25$-question test of overall difficulty
+$\hat p \approx 0.558$ is
+$p_{\text{Bonferroni}} \approx 1.35\times 10^{-3}$ -- roughly one in
+$740$. Compare to a conventional $\alpha = 0.01$ threshold: we reject
+the null hypothesis of independence at better than the $1\%$ level
+even \emph{after} accounting for multiple testing.
+\end{keyresult}
+
+The qualitative ``shortlist'' verdict of Task~4 has hardened into a
+quantitative rejection of the null. The pair $(5,10)$ is now flagged
+not just as a geometric outlier in $\Sm$ but as a statistical
+impossibility under independent test-taking.
+
+\subsection{Looking ahead to Task 8}
+The homogeneous-$p$ derivation above suffices for
+\texttt{sample\_small}, where the empirical column means are not too
+dispersed. For \texttt{sample\_larger} ($M=10{,}000$, $N=50$) we have
+no reason to expect questions to share difficulty, and the
+identically-distributed assumption in (ii) of the CLT box fails.
+
+The fix is to drop (ii) and invoke the more general
+\emph{Lindeberg--Feller CLT}, which only requires (i)~independence,
+(iii)~finite variance \emph{plus} a uniform smallness condition on
+individual variances. Both extensions hold trivially: the
+$Y_k = X_{ik}X_{jk}$ remain bounded by $1$, so the Lindeberg
+condition is automatic.
+
+The mean and variance generalise term-by-term:
+\begin{equation}
+  \langle S\rangle \;=\; \sum_{k=1}^{N}(2p_k-1)^2,
+  \qquad
+  \sigma_N^2 \;=\; \sum_{k=1}^{N}\bigl[1-(2p_k-1)^4\bigr],
+  \label{eq:T8-moments}
+\end{equation}
+where $p_k$ is the empirical column-mean accuracy on question $k$.
+Equations~\eqref{eq:T7-mass}--\eqref{eq:T7-tail} retain their
+Gaussian form; only the moments are replaced by
+Eq.~\eqref{eq:T8-moments}. Task~8 then computes
+$z_{ij} = (S_{ij} - \langle S\rangle)/\sigma_N$ for every pair and
+flags those exceeding a threshold corrected for the
+$\binom{10{,}000}{2} \approx 5\times 10^7$ candidate comparisons.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \end{document}
