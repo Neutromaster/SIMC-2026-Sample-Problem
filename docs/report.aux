@@ -6,70 +6,91 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Definition and encoding}{2}{subsection.1.1}\protected@file@percent }
 \newlabel{eq:design}{{1}{2}{Definition and encoding}{equation.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Visualisation}{2}{subsection.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2}Task 2 -- The Similarity Matrix}{2}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Construction}{2}{subsection.2.1}\protected@file@percent }
-\newlabel{eq:sim}{{2}{2}{Construction}{equation.2}{}}
-\newlabel{eq:sim-term}{{3}{2}{Construction}{equation.3}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Design matrix for \texttt  {sample\_small} ($M=50$, $N=25$). Black cells encode wrong answers, white cells encode correct answers. Right margin: student net scores. Bottom margin: question net scores. Overall accuracy is \SI {55.8}{\percent }.}}{3}{figure.caption.2}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:task1}{{1}{3}{Design matrix for \texttt {sample\_small} ($M=50$, $N=25$). Black cells encode wrong answers, white cells encode correct answers. Right margin: student net scores. Bottom margin: question net scores. Overall accuracy is \SI {55.8}{\percent }}{figure.caption.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Geometric interpretation}{3}{subsection.2.2}\protected@file@percent }
-\newlabel{eq:cos}{{5}{3}{Geometric interpretation}{equation.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Visualisation and outliers}{3}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Task 2 -- The Similarity Matrix}{3}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Construction}{3}{subsection.2.1}\protected@file@percent }
+\newlabel{eq:sim}{{2}{3}{Construction}{equation.2}{}}
+\newlabel{eq:sim-term}{{3}{3}{Construction}{equation.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Geometric interpretation}{4}{subsection.2.2}\protected@file@percent }
+\newlabel{eq:cos}{{5}{4}{Geometric interpretation}{equation.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Visualisation and outliers}{4}{subsection.2.3}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Left: similarity matrix $\bm  {S}= \bm  {X}\bm  {X}^{\!\top }$ for \texttt  {sample\_small}. The diagonal $S_{ii}=N=25$ is dark red. Right: histogram of off-diagonal $S_{ij}$ with $i<j$.}}{4}{figure.caption.3}\protected@file@percent }
 \newlabel{fig:task2}{{2}{4}{Left: similarity matrix $\Sm = \X \X ^{\!\top }$ for \texttt {sample\_small}. The diagonal $S_{ii}=N=25$ is dark red. Right: histogram of off-diagonal $S_{ij}$ with $i<j$}{figure.caption.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Task 3 -- Clustering with $K$-means and Silhouette Analysis}{4}{section.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Algorithm}{4}{subsection.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Visualising cluster quality}{4}{subsection.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Silhouette score}{4}{subsection.3.3}\protected@file@percent }
-\newlabel{eq:silh}{{6}{4}{Silhouette score}{equation.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Visualising cluster quality}{5}{subsection.3.2}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Cluster-sorted similarity matrices for three values of $K$.}}{5}{figure.caption.4}\protected@file@percent }
 \newlabel{fig:task3-sweep}{{3}{5}{Cluster-sorted similarity matrices for three values of $K$}{figure.caption.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Silhouette score}{5}{subsection.3.3}\protected@file@percent }
+\newlabel{eq:silh}{{6}{5}{Silhouette score}{equation.6}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4}The silhouette trap and our fix}{5}{subsection.3.4}\protected@file@percent }
 \newlabel{sec:silh-trap}{{3.4}{5}{The silhouette trap and our fix}{subsection.3.4}{}}
 \newlabel{eq:filter}{{7}{5}{The silhouette trap and our fix}{equation.7}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Silhouette sweep on \texttt  {sample\_small}. Raw silhouette peaks at $K=30$, but Eq.~\eqref  {eq:filter} disqualifies it.}}{5}{table.caption.5}\protected@file@percent }
-\newlabel{tab:silh}{{1}{5}{Silhouette sweep on \texttt {sample\_small}. Raw silhouette peaks at $K=30$, but Eq.~\eqref {eq:filter} disqualifies it}{table.caption.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Silhouette sweep on \texttt  {sample\_small}. Raw silhouette peaks at $K=30$, but Eq.~\eqref  {eq:filter} disqualifies it.}}{6}{table.caption.5}\protected@file@percent }
+\newlabel{tab:silh}{{1}{6}{Silhouette sweep on \texttt {sample\_small}. Raw silhouette peaks at $K=30$, but Eq.~\eqref {eq:filter} disqualifies it}{table.caption.5}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Left: silhouette as a function of $K$. Right: best cluster-sorted similarity matrix at $K^\star = 10$.}}{6}{figure.caption.6}\protected@file@percent }
 \newlabel{fig:task3-best}{{4}{6}{Left: silhouette as a function of $K$. Right: best cluster-sorted similarity matrix at $K^\star = 10$}{figure.caption.6}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Task 4 -- A Plausibility Argument for Collusion}{6}{section.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Can we already name names? Honestly, no.}{6}{subsection.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Shift the goal: suspects, not convicts}{6}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Shift the goal: suspects, not convicts}{7}{subsection.4.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Where would collusion ``leak'' into our analysis?}{7}{subsection.4.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Fingerprint 1 -- impossibly perfect agreement on a non-trivial test.}{7}{section*.7}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Fingerprint 2 -- agreement on the \emph  {hard} questions as well as the easy ones.}{7}{section*.8}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Fingerprint 3 -- crystalline cluster co-membership.}{7}{section*.9}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}The data behind the shortlist}{7}{subsection.4.4}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Suspect shortlist after Tasks~1--3. Only one off-diagonal pair $(5,10)$ stands clearly above the empirical noise floor. $\bar  S$ and $\hat  \sigma $ are computed on the $1225$ unique upper-triangular off-diagonal entries of $\bm  {S}$.}}{7}{table.caption.10}\protected@file@percent }
-\newlabel{tab:suspects}{{2}{7}{Suspect shortlist after Tasks~1--3. Only one off-diagonal pair $(5,10)$ stands clearly above the empirical noise floor. $\bar S$ and $\hat \sigma $ are computed on the $1225$ unique upper-triangular off-diagonal entries of $\Sm $}{table.caption.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}The data behind the shortlist}{8}{subsection.4.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Suspect shortlist after Tasks~1--3. Only one off-diagonal pair $(5,10)$ stands clearly above the empirical noise floor. $\bar  S$ and $\hat  \sigma $ are computed on the $1225$ unique upper-triangular off-diagonal entries of $\bm  {S}$.}}{8}{table.caption.10}\protected@file@percent }
+\newlabel{tab:suspects}{{2}{8}{Suspect shortlist after Tasks~1--3. Only one off-diagonal pair $(5,10)$ stands clearly above the empirical noise floor. $\bar S$ and $\hat \sigma $ are computed on the $1225$ unique upper-triangular off-diagonal entries of $\Sm $}{table.caption.10}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {5}Task 5 -- Mean and Variance of the Similarity Score Under the Null Hypothesis}{8}{section.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1}What are we actually computing, and why?}{8}{subsection.5.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2}The probability model (one student, one question)}{8}{subsection.5.2}\protected@file@percent }
 \newlabel{eq:null}{{8}{8}{The probability model (one student, one question)}{equation.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Two students, one question: agree or disagree?}{8}{subsection.5.3}\protected@file@percent }
-\newlabel{eq:Yk}{{9}{8}{Two students, one question: agree or disagree?}{equation.9}{}}
-\newlabel{eq:pY+1}{{10}{8}{Two students, one question: agree or disagree?}{equation.10}{}}
-\newlabel{eq:pY-1}{{11}{8}{Two students, one question: agree or disagree?}{equation.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Two students, one question: agree or disagree?}{9}{subsection.5.3}\protected@file@percent }
+\newlabel{eq:Yk}{{9}{9}{Two students, one question: agree or disagree?}{equation.9}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces All four ways two students can answer one question, with the probability of each combination and the resulting $Y_k$.}}{9}{table.caption.11}\protected@file@percent }
 \newlabel{tab:fourcases}{{3}{9}{All four ways two students can answer one question, with the probability of each combination and the resulting $Y_k$}{table.caption.11}{}}
+\newlabel{eq:pY+1}{{10}{9}{Two students, one question: agree or disagree?}{equation.10}{}}
+\newlabel{eq:pY-1}{{11}{9}{Two students, one question: agree or disagree?}{equation.11}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.4}The average of a single $Y_k$}{9}{subsection.5.4}\protected@file@percent }
 \newlabel{eq:EYexpand}{{13}{9}{The average of a single $Y_k$}{equation.13}{}}
 \newlabel{eq:EY}{{14}{9}{The average of a single $Y_k$}{equation.14}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.5}The variance of a single $Y_k$ -- a one-line trick}{9}{subsection.5.5}\protected@file@percent }
 \newlabel{eq:vardef}{{15}{9}{The variance of a single $Y_k$ -- a one-line trick}{equation.15}{}}
-\newlabel{eq:EYsq}{{16}{9}{The variance of a single $Y_k$ -- a one-line trick}{equation.16}{}}
-\newlabel{eq:VarY}{{17}{9}{The variance of a single $Y_k$ -- a one-line trick}{equation.17}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.6}Putting all $N$ questions together}{9}{subsection.5.6}\protected@file@percent }
-\newlabel{eq:Ssum}{{18}{9}{Putting all $N$ questions together}{equation.18}{}}
-\@writefile{toc}{\contentsline {paragraph}{Rule 1 -- the mean of a sum is the sum of the means.}{9}{section*.12}\protected@file@percent }
-\newlabel{eq:ES}{{19}{9}{Rule 1 -- the mean of a sum is the sum of the means}{equation.19}{}}
+\newlabel{eq:EYsq}{{16}{10}{The variance of a single $Y_k$ -- a one-line trick}{equation.16}{}}
+\newlabel{eq:VarY}{{17}{10}{The variance of a single $Y_k$ -- a one-line trick}{equation.17}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.6}Putting all $N$ questions together}{10}{subsection.5.6}\protected@file@percent }
+\newlabel{eq:Ssum}{{18}{10}{Putting all $N$ questions together}{equation.18}{}}
+\@writefile{toc}{\contentsline {paragraph}{Rule 1 -- the mean of a sum is the sum of the means.}{10}{section*.12}\protected@file@percent }
+\newlabel{eq:ES}{{19}{10}{Rule 1 -- the mean of a sum is the sum of the means}{equation.19}{}}
 \@writefile{toc}{\contentsline {paragraph}{Rule 2 -- for \emph  {independent} terms, the variance of a sum is the sum of the variances.}{10}{section*.13}\protected@file@percent }
 \newlabel{eq:VarS}{{20}{10}{Rule 2 -- for \emph {independent} terms, the variance of a sum is the sum of the variances}{equation.20}{}}
 \newlabel{eq:sigmaN}{{21}{10}{Rule 2 -- for \emph {independent} terms, the variance of a sum is the sum of the variances}{equation.21}{}}
 \newlabel{eq:final}{{22}{10}{Rule 2 -- for \emph {independent} terms, the variance of a sum is the sum of the variances}{equation.22}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.7}A worked numerical example}{10}{subsection.5.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.8}Sanity checks at the extremes}{10}{subsection.5.8}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Limiting cases of Eq.~\eqref  {eq:final}. The two extremes $p=0$ and $p=1$ give the same answer, reflecting the symmetry $p\leftrightarrow 1-p$ inside both $(2p-1)^2$ and $(2p-1)^4$.}}{10}{table.caption.14}\protected@file@percent }
-\newlabel{tab:limits}{{4}{10}{Limiting cases of Eq.~\eqref {eq:final}. The two extremes $p=0$ and $p=1$ give the same answer, reflecting the symmetry $p\leftrightarrow 1-p$ inside both $(2p-1)^2$ and $(2p-1)^4$}{table.caption.14}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.9}Bringing the null model back to the data}{10}{subsection.5.9}\protected@file@percent }
-\gdef \@abspage@last{11}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Limiting cases of Eq.~\eqref  {eq:final}. The two extremes $p=0$ and $p=1$ give the same answer, reflecting the symmetry $p\leftrightarrow 1-p$ inside both $(2p-1)^2$ and $(2p-1)^4$.}}{11}{table.caption.14}\protected@file@percent }
+\newlabel{tab:limits}{{4}{11}{Limiting cases of Eq.~\eqref {eq:final}. The two extremes $p=0$ and $p=1$ give the same answer, reflecting the symmetry $p\leftrightarrow 1-p$ inside both $(2p-1)^2$ and $(2p-1)^4$}{table.caption.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.8}Sanity checks at the extremes}{11}{subsection.5.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.9}Bringing the null model back to the data}{11}{subsection.5.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Task 6 -- Monte Carlo Validation of the Null Moments}{11}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Why simulate something we already proved?}{11}{subsection.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}The Monte Carlo recipe}{11}{subsection.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Headline check: $N = 100$, $p = 1/2$, $M = 10^{6}$}{12}{subsection.6.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Headline Monte Carlo at $(N, p) = (100, 0.5)$ with one million independent pairs. The error in the mean is $0.20\,\mathrm  {SE}$, well within the expected standard-error band $\sigma _N / \sqrt  {M} = 10^{-2}$.}}{12}{table.caption.15}\protected@file@percent }
+\newlabel{tab:task6-headline}{{5}{12}{Headline Monte Carlo at $(N, p) = (100, 0.5)$ with one million independent pairs. The error in the mean is $0.20\,\mathrm {SE}$, well within the expected standard-error band $\sigma _N / \sqrt {M} = 10^{-2}$}{table.caption.15}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Convergence at the textbook rate}{12}{subsection.6.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Monte Carlo convergence at $(N, p) = (100, 0.5)$. Errors in the mean and standard deviation fall as $1/\sqrt  {M}$ on log--log axes, consistent with the classical Monte Carlo scaling.}}{12}{figure.caption.16}\protected@file@percent }
+\newlabel{fig:task6-convergence}{{5}{12}{Monte Carlo convergence at $(N, p) = (100, 0.5)$. Errors in the mean and standard deviation fall as $1/\sqrt {M}$ on log--log axes, consistent with the classical Monte Carlo scaling}{figure.caption.16}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Validation across the $(N, p)$ plane}{12}{subsection.6.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Monte Carlo (markers) versus closed form (lines) across the $(N, p)$ plane. Left panel: $\langle S\rangle = N(2p-1)^{2}$. Right panel: $\sigma _N = \sqrt  {N[1-(2p-1)^{4}]}$. The markers are the empirical $\hat  \mu _{\mathrm  {MC}}$ and $\hat  \sigma _{\mathrm  {MC}}$ with $M = 2\times 10^{5}$ pairs per cell. All $25$ cells agree to within sampling noise.}}{13}{figure.caption.17}\protected@file@percent }
+\newlabel{fig:task6-grid}{{6}{13}{Monte Carlo (markers) versus closed form (lines) across the $(N, p)$ plane. Left panel: $\langle S\rangle = N(2p-1)^{2}$. Right panel: $\sigma _N = \sqrt {N[1-(2p-1)^{4}]}$. The markers are the empirical $\hat \mu _{\mathrm {MC}}$ and $\hat \sigma _{\mathrm {MC}}$ with $M = 2\times 10^{5}$ pairs per cell. All $25$ cells agree to within sampling noise}{figure.caption.17}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.6}Bonus: the distribution of $S$ is exactly known}{13}{subsection.6.6}\protected@file@percent }
+\newlabel{sec:task6-exact}{{6.6}{13}{Bonus: the distribution of $S$ is exactly known}{subsection.6.6}{}}
+\newlabel{eq:q-defn}{{24}{13}{Bonus: the distribution of $S$ is exactly known}{equation.24}{}}
+\newlabel{eq:exact-S}{{25}{13}{Bonus: the distribution of $S$ is exactly known}{equation.25}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.7}Closing the loop: the $(5, 10)$ pair under the null}{13}{subsection.6.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Distribution of $S$ under the null at $(N, p) = (100, 0.5)$. Blue bars: $10^{6}$ Monte Carlo samples. Red markers: exact shifted-binomial PMF $S = 2T-N$ with $T \sim \mathrm  {Binomial}(N,q)$, $q = p^{2}+(1-p)^{2}$. Black curve: CLT Gaussian $\mathcal  {N}(0,\,100)$. The three agree to graphical precision, which validates Task~7's Gaussian $p$-value at $N=100$.}}{14}{figure.caption.18}\protected@file@percent }
+\newlabel{fig:task6-distribution}{{7}{14}{Distribution of $S$ under the null at $(N, p) = (100, 0.5)$. Blue bars: $10^{6}$ Monte Carlo samples. Red markers: exact shifted-binomial PMF $S = 2T-N$ with $T \sim \mathrm {Binomial}(N,q)$, $q = p^{2}+(1-p)^{2}$. Black curve: CLT Gaussian $\mathcal {N}(0,\,100)$. The three agree to graphical precision, which validates Task~7's Gaussian $p$-value at $N=100$}{figure.caption.18}{}}
+\newlabel{eq:510z}{{26}{14}{Closing the loop: the $(5, 10)$ pair under the null}{equation.26}{}}
+\newlabel{eq:510-exact-p}{{27}{14}{Closing the loop: the $(5, 10)$ pair under the null}{equation.27}{}}
+\gdef \@abspage@last{15}

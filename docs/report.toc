@@ -1,32 +1,40 @@
 \contentsline {section}{\numberline {1}Task 1 -- The Design Matrix}{2}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Definition and encoding}{2}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}Visualisation}{2}{subsection.1.2}%
-\contentsline {section}{\numberline {2}Task 2 -- The Similarity Matrix}{2}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Construction}{2}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Geometric interpretation}{3}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Visualisation and outliers}{3}{subsection.2.3}%
+\contentsline {section}{\numberline {2}Task 2 -- The Similarity Matrix}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Construction}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Geometric interpretation}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Visualisation and outliers}{4}{subsection.2.3}%
 \contentsline {section}{\numberline {3}Task 3 -- Clustering with $K$-means and Silhouette Analysis}{4}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Algorithm}{4}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Visualising cluster quality}{4}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Silhouette score}{4}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.2}Visualising cluster quality}{5}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Silhouette score}{5}{subsection.3.3}%
 \contentsline {subsection}{\numberline {3.4}The silhouette trap and our fix}{5}{subsection.3.4}%
 \contentsline {section}{\numberline {4}Task 4 -- A Plausibility Argument for Collusion}{6}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Can we already name names? Honestly, no.}{6}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Shift the goal: suspects, not convicts}{6}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.2}Shift the goal: suspects, not convicts}{7}{subsection.4.2}%
 \contentsline {subsection}{\numberline {4.3}Where would collusion ``leak'' into our analysis?}{7}{subsection.4.3}%
 \contentsline {paragraph}{Fingerprint 1 -- impossibly perfect agreement on a non-trivial test.}{7}{section*.7}%
 \contentsline {paragraph}{Fingerprint 2 -- agreement on the \emph {hard} questions as well as the easy ones.}{7}{section*.8}%
 \contentsline {paragraph}{Fingerprint 3 -- crystalline cluster co-membership.}{7}{section*.9}%
-\contentsline {subsection}{\numberline {4.4}The data behind the shortlist}{7}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.4}The data behind the shortlist}{8}{subsection.4.4}%
 \contentsline {section}{\numberline {5}Task 5 -- Mean and Variance of the Similarity Score Under the Null Hypothesis}{8}{section.5}%
 \contentsline {subsection}{\numberline {5.1}What are we actually computing, and why?}{8}{subsection.5.1}%
 \contentsline {subsection}{\numberline {5.2}The probability model (one student, one question)}{8}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Two students, one question: agree or disagree?}{8}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.3}Two students, one question: agree or disagree?}{9}{subsection.5.3}%
 \contentsline {subsection}{\numberline {5.4}The average of a single $Y_k$}{9}{subsection.5.4}%
 \contentsline {subsection}{\numberline {5.5}The variance of a single $Y_k$ -- a one-line trick}{9}{subsection.5.5}%
-\contentsline {subsection}{\numberline {5.6}Putting all $N$ questions together}{9}{subsection.5.6}%
-\contentsline {paragraph}{Rule 1 -- the mean of a sum is the sum of the means.}{9}{section*.12}%
+\contentsline {subsection}{\numberline {5.6}Putting all $N$ questions together}{10}{subsection.5.6}%
+\contentsline {paragraph}{Rule 1 -- the mean of a sum is the sum of the means.}{10}{section*.12}%
 \contentsline {paragraph}{Rule 2 -- for \emph {independent} terms, the variance of a sum is the sum of the variances.}{10}{section*.13}%
 \contentsline {subsection}{\numberline {5.7}A worked numerical example}{10}{subsection.5.7}%
-\contentsline {subsection}{\numberline {5.8}Sanity checks at the extremes}{10}{subsection.5.8}%
-\contentsline {subsection}{\numberline {5.9}Bringing the null model back to the data}{10}{subsection.5.9}%
+\contentsline {subsection}{\numberline {5.8}Sanity checks at the extremes}{11}{subsection.5.8}%
+\contentsline {subsection}{\numberline {5.9}Bringing the null model back to the data}{11}{subsection.5.9}%
+\contentsline {section}{\numberline {6}Task 6 -- Monte Carlo Validation of the Null Moments}{11}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Why simulate something we already proved?}{11}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}The Monte Carlo recipe}{11}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Headline check: $N = 100$, $p = 1/2$, $M = 10^{6}$}{12}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Convergence at the textbook rate}{12}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Validation across the $(N, p)$ plane}{12}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.6}Bonus: the distribution of $S$ is exactly known}{13}{subsection.6.6}%
+\contentsline {subsection}{\numberline {6.7}Closing the loop: the $(5, 10)$ pair under the null}{13}{subsection.6.7}%
