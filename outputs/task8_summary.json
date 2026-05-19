@@ -1,0 +1,205 @@
+{
+  "dataset": "SIMC2024_SampleChallenge\\sample.npz",
+  "students": 10000,
+  "questions": 50,
+  "estimated_question_correct_probability": {
+    "min": 0.4903,
+    "max": 0.9015,
+    "mean": 0.5319459999999999
+  },
+  "null_similarity": {
+    "expected_value": 2.5567244399999995,
+    "standard_deviation": 6.954882386175417
+  },
+  "pair_threshold": 40,
+  "number_of_high_similarity_pairs": 10,
+  "duplicate_groups": [
+    {
+      "size": 5,
+      "students_zero_based": [
+        85,
+        1351,
+        1906,
+        3542,
+        5362
+      ],
+      "students_one_based": [
+        86,
+        1352,
+        1907,
+        3543,
+        5363
+      ],
+      "answer_vector": [
+        1,
+        1,
+        1,
+        1,
+        -1,
+        1,
+        -1,
+        -1,
+        1,
+        1,
+        -1,
+        1,
+        -1,
+        -1,
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        1,
+        -1,
+        -1,
+        1,
+        -1,
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        -1,
+        -1,
+        1,
+        1,
+        -1,
+        1,
+        -1,
+        -1,
+        1,
+        -1,
+        1,
+        1,
+        -1,
+        -1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    }
+  ],
+  "tail_probabilities": {
+    "30": 4.399587825874674e-05,
+    "32": 1.1118123546945207e-05,
+    "34": 2.4727546519316534e-06,
+    "36": 4.781701398273056e-07,
+    "38": 7.916297627822196e-08,
+    "40": 1.0994540593179015e-08,
+    "42": 1.2458015238097537e-09,
+    "44": 1.1059792285643746e-10,
+    "46": 7.214098927845552e-12,
+    "48": 3.0742641113398355e-13,
+    "50": 6.421319136302338e-15
+  },
+  "expected_number_of_pairs_by_tail": {
+    "30": 2199.5739335460435,
+    "32": 555.8505867295256,
+    "34": 123.62536882332302,
+    "36": 23.90611614066614,
+    "38": 3.957752999029707,
+    "40": 0.5496720569559849,
+    "42": 0.06228384718286864,
+    "44": 0.005529343153207591,
+    "46": 0.00036066887589763835,
+    "48": 1.5369783424643505e-05,
+    "50": 3.2103385021943537e-07
+  },
+  "high_similarity_pairs": [
+    {
+      "student_a_zero_based": 85,
+      "student_b_zero_based": 1351,
+      "student_a_one_based": 86,
+      "student_b_one_based": 1352,
+      "similarity": 50,
+      "hamming_distance": 0,
+      "null_tail_probability_at_least_this_sim": 6.421319136302338e-15
+    },
+    {
+      "student_a_zero_based": 85,
+      "student_b_zero_based": 1906,
+      "student_a_one_based": 86,
+      "student_b_one_based": 1907,
+      "similarity": 50,
+      "hamming_distance": 0,
+      "null_tail_probability_at_least_this_sim": 6.421319136302338e-15
+    },
+    {
+      "student_a_zero_based": 85,
+      "student_b_zero_based": 3542,
+      "student_a_one_based": 86,
+      "student_b_one_based": 3543,
+      "similarity": 50,
+      "hamming_distance": 0,
+      "null_tail_probability_at_least_this_sim": 6.421319136302338e-15
+    },
+    {
+      "student_a_zero_based": 85,
+      "student_b_zero_based": 5362,
+      "student_a_one_based": 86,
+      "student_b_one_based": 5363,
+      "similarity": 50,
+      "hamming_distance": 0,
+      "null_tail_probability_at_least_this_sim": 6.421319136302338e-15
+    },
+    {
+      "student_a_zero_based": 1351,
+      "student_b_zero_based": 1906,
+      "student_a_one_based": 1352,
+      "student_b_one_based": 1907,
+      "similarity": 50,
+      "hamming_distance": 0,
+      "null_tail_probability_at_least_this_sim": 6.421319136302338e-15
+    },
+    {
+      "student_a_zero_based": 1351,
+      "student_b_zero_based": 3542,
+      "student_a_one_based": 1352,
+      "student_b_one_based": 3543,
+      "similarity": 50,
+      "hamming_distance": 0,
+      "null_tail_probability_at_least_this_sim": 6.421319136302338e-15
+    },
+    {
+      "student_a_zero_based": 1351,
+      "student_b_zero_based": 5362,
+      "student_a_one_based": 1352,
+      "student_b_one_based": 5363,
+      "similarity": 50,
+      "hamming_distance": 0,
+      "null_tail_probability_at_least_this_sim": 6.421319136302338e-15
+    },
+    {
+      "student_a_zero_based": 1906,
+      "student_b_zero_based": 3542,
+      "student_a_one_based": 1907,
+      "student_b_one_based": 3543,
+      "similarity": 50,
+      "hamming_distance": 0,
+      "null_tail_probability_at_least_this_sim": 6.421319136302338e-15
+    },
+    {
+      "student_a_zero_based": 1906,
+      "student_b_zero_based": 5362,
+      "student_a_one_based": 1907,
+      "student_b_one_based": 5363,
+      "similarity": 50,
+      "hamming_distance": 0,
+      "null_tail_probability_at_least_this_sim": 6.421319136302338e-15
+    },
+    {
+      "student_a_zero_based": 3542,
+      "student_b_zero_based": 5362,
+      "student_a_one_based": 3543,
+      "student_b_one_based": 5363,
+      "similarity": 50,
+      "hamming_distance": 0,
+      "null_tail_probability_at_least_this_sim": 6.421319136302338e-15
+    }
+  ]
+}
