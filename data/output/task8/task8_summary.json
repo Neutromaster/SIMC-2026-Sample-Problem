@@ -1,5 +1,5 @@
 {
-  "dataset": "SIMC2024_SampleChallenge\\sample.npz",
+  "dataset": "data\\input\\sample.npz",
   "students": 10000,
   "questions": 50,
   "estimated_question_correct_probability": {

@@ -51,17 +51,17 @@ So even one identical pair would be extremely surprising under the null model. H
 Run:
 
 ```powershell
-C:\Users\sanan\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe task8_solution.py
+C:\Users\sanan\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe src/task8.py
 ```
 
 Outputs are written to:
 
-- `outputs/task8_summary.json`
-- `outputs/task8_high_similarity_pairs.csv`
+- `data/output/task8/task8_summary.json`
+- `data/output/task8/task8_high_similarity_pairs.csv`
 
 ## Files
 
-- `SIMC2024_SampleChallenge/sample.npz`: provided sample challenge data
-- `task8_solution.py`: reproducible analysis
-- `outputs/task8_summary.json`: machine-readable summary
-- `outputs/task8_high_similarity_pairs.csv`: all pairs with similarity at least `40`
+- `data/input/sample.npz`: provided sample challenge data
+- `src/task8.py`: reproducible analysis
+- `data/output/task8/task8_summary.json`: machine-readable summary
+- `data/output/task8/task8_high_similarity_pairs.csv`: all pairs with similarity at least `40`

@@ -8,8 +8,8 @@ from pathlib import Path
 import numpy as np
 
 
-DATA_PATH = Path("SIMC2024_SampleChallenge") / "sample.npz"
-OUTPUT_DIR = Path("outputs")
+DATA_PATH = Path("data") / "input" / "sample.npz"
+OUTPUT_DIR = Path("data") / "output" / "task8"
 PAIR_THRESHOLD = 40
 
 
