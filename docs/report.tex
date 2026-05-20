@@ -52,7 +52,7 @@
 % ------------------------------------------------------------------
 \title{\bfseries Who Are Colluding? \\
        \large A Linear-Algebraic and Statistical Audit of Test-Taking Behaviour \\
-       \normalsize SIMC 2026 Sample Problem -- Tasks 1 through 6}
+       \normalsize SIMC 2026 Sample Problem -- Tasks 1 through 8}
 \author{}
 \date{\today}
 
@@ -72,10 +72,13 @@ collusion. Task~5 derives the closed-form mean
 $\langle S\rangle = N(2p-1)^2$ and standard deviation
 $\sigma_N = \sqrt{N\bigl[1 - (2p-1)^4\bigr]}$ of the similarity score under
 a null hypothesis of independent test-takers. Task~6 validates that closed
-form by Monte Carlo across a 25-cell $(N,p)$ grid, recovers the exact
-shifted-binomial distribution of $S$ under the null, and turns the $(5,10)$
-pair's similarity into a calibrated tail probability of
-$\,4.2\times 10^{-8}$ -- the shortlist becomes a verdict.
+form by Monte Carlo across a 25-cell $(N,p)$ grid, Task~7 turns the null
+model into a distributional tail test, and Task~8 applies the
+heterogeneous-question version of that test to all
+$\binom{10{,}000}{2}$ pairs in \texttt{sample\_larger}. The final answer
+is a single five-student collusion group:
+$\{85,1351,1906,3542,5362\}$ in zero-based indexing
+($\{86,1352,1907,3543,5363\}$ in one-based student numbers).
 \end{abstract}
 
 \tableofcontents
@@ -1185,17 +1188,189 @@ $z_{ij} = (S_{ij} - \langle S\rangle)/\sigma_N$ for every pair and
 flags those exceeding a threshold corrected for the
 $\binom{10{,}000}{2} \approx 5\times 10^7$ candidate comparisons.
 
+\vspace{1em}
 
+% ==================================================================
+\section{Task 8 -- Identifying Colluders in \texttt{sample\_larger}}
+% ==================================================================
 
+\subsection{Why the null model must become heterogeneous}
+The homogeneous-$p$ derivation above is adequate for
+\texttt{sample\_small}, but \texttt{sample\_larger} contains
+$M=10{,}000$ students and $N=50$ questions whose empirical difficulties
+are visibly uneven. In the larger dataset the estimated per-question
+correct-answer probabilities range from
+\[
+  \min_k \hat p_k = 0.4903
+  \qquad\text{to}\qquad
+  \max_k \hat p_k = 0.9015,
+\]
+with mean $\bar p = 0.531946$. A single pooled $p$ would therefore
+understate the chance that two independent students agree on the easy
+questions.
 
+The natural extension is to keep independence across students but allow
+each question to have its own difficulty $\hat p_k$. For a pair of
+independent students, define
+\[
+  Y_k = X_{ik}X_{jk}\in\{-1,+1\}.
+\]
+Then
+\begin{equation}
+  \Pr(Y_k=+1)
+  = \hat p_k^2 + (1-\hat p_k)^2
+  \equiv q_k,
+  \qquad
+  \Exp[Y_k]=(2\hat p_k-1)^2.
+  \label{eq:T8-qk}
+\end{equation}
+The similarity score is still
+\[
+  S_{ij}=\sum_{k=1}^{50}Y_k,
+\]
+but it is now a sum of independent, non-identically distributed
+Bernoulli-derived variables. Since each $Y_k$ is bounded by $1$, the
+Lindeberg condition is automatic, and the Task~7 Gaussian logic
+generalises term-by-term:
+\begin{equation}
+  \mu_S = \Exp[S_{ij}]
+  = \sum_{k=1}^{50}(2\hat p_k-1)^2
+  = 2.556724,
+  \label{eq:T8-mu}
+\end{equation}
+\begin{equation}
+  \sigma_S^2 = \Var(S_{ij})
+  = \sum_{k=1}^{50}\left[1-(2\hat p_k-1)^4\right]
+  = 48.370389,
+  \qquad
+  \sigma_S = 6.954882.
+  \label{eq:T8-sigma}
+\end{equation}
 
+\subsection{Exact tail calculation}
+For final decisions we do not need to rely only on the Gaussian
+approximation. Let $K_{ij}$ be the number of questions on which students
+$i$ and $j$ agree. Since $S_{ij}=2K_{ij}-50$, the event
+$S_{ij}\geq s$ is equivalent to
+\[
+  K_{ij}\geq \frac{s+50}{2}.
+\]
+Under the heterogeneous null,
+$K_{ij}$ has the Poisson-binomial distribution with success
+probabilities $q_1,\ldots,q_{50}$ from Eq.~\eqref{eq:T8-qk}. We compute
+that distribution by dynamic programming:
+\[
+  f_{r}^{(k)}
+  =
+  (1-q_k)f_{r}^{(k-1)} + q_k f_{r-1}^{(k-1)},
+  \qquad
+  f_0^{(0)}=1.
+\]
+The resulting upper-tail probabilities are shown in
+Table~\ref{tab:T8-tail}.
 
+\begin{table}[htb]
+  \centering
+  \begin{tabular}{r r r}
+    \toprule
+    threshold $s$ & $\Pr(S\geq s)$ under null &
+    expected number among $\binom{10{,}000}{2}$ pairs \\
+    \midrule
+    36 & $4.7817\times10^{-7}$ & $23.906$ \\
+    38 & $7.9163\times10^{-8}$ & $3.958$ \\
+    40 & $1.0995\times10^{-8}$ & $0.550$ \\
+    42 & $1.2458\times10^{-9}$ & $0.062$ \\
+    44 & $1.1060\times10^{-10}$ & $0.0055$ \\
+    46 & $7.2141\times10^{-12}$ & $3.61\times10^{-4}$ \\
+    48 & $3.0743\times10^{-13}$ & $1.54\times10^{-5}$ \\
+    50 & $6.4213\times10^{-15}$ & $3.21\times10^{-7}$ \\
+    \bottomrule
+  \end{tabular}
+  \caption{Heterogeneous-question null tails for
+  \texttt{sample\_larger}. Even after scanning nearly fifty million
+  pairs, an identical pair ($S=50$) has expected count far below one.}
+  \label{tab:T8-tail}
+\end{table}
 
+\subsection{Search procedure}
+The computation is intentionally simple and auditable:
+\begin{enumerate}[label=(\alph*),leftmargin=2.2em]
+  \item estimate $\hat p_k$ from the $10{,}000\times 50$ design matrix;
+  \item compute the exact Poisson-binomial null distribution for
+        pairwise agreement counts;
+  \item scan all off-diagonal pairwise dot products
+        $S_{ij}=\X_{i,\cdot}\X_{j,\cdot}^{\!\top}$;
+  \item record every pair with $S_{ij}\geq 40$, a threshold whose
+        null expectation is already below one false positive in the
+        whole scan.
+\end{enumerate}
+The implementation is in \texttt{src/task8.py}; the machine-readable
+outputs are written to
+\texttt{data/output/task8/task8\_summary.json} and
+\texttt{data/output/task8/task8\_high\_similarity\_pairs.csv}.
 
+\subsection{Result}
+The scan finds exactly ten pairs with $S\geq40$, and all ten have the
+maximum possible similarity $S=50$. They form one complete five-student
+clique:
+\[
+  \{85,\;1351,\;1906,\;3542,\;5362\}
+  \quad\text{(zero-based indices).}
+\]
+Equivalently, if students are numbered from $1$ rather than Python's
+$0$,
+\[
+  \{86,\;1352,\;1907,\;3543,\;5363\}.
+\]
 
+\begin{table}[htb]
+  \centering
+  \begin{tabular}{c c c}
+    \toprule
+    student $i$ & student $j$ & similarity $S_{ij}$ \\
+    \midrule
+    85 & 1351 & 50 \\
+    85 & 1906 & 50 \\
+    85 & 3542 & 50 \\
+    85 & 5362 & 50 \\
+    1351 & 1906 & 50 \\
+    1351 & 3542 & 50 \\
+    1351 & 5362 & 50 \\
+    1906 & 3542 & 50 \\
+    1906 & 5362 & 50 \\
+    3542 & 5362 & 50 \\
+    \bottomrule
+  \end{tabular}
+  \caption{All high-similarity pairs found in Task~8, using zero-based
+  indexing. There are no other pairs with $S\geq40$.}
+  \label{tab:T8-pairs}
+\end{table}
 
+\begin{keyresult}[Task 8 final answer]
+The likely colluding group in \texttt{sample\_larger} is
+\[
+  \boxed{\{85,\;1351,\;1906,\;3542,\;5362\}}
+\]
+in zero-based indexing, or
+\[
+  \boxed{\{86,\;1352,\;1907,\;3543,\;5363\}}
+\]
+in one-based student numbering. Each pair inside this group has
+$S=50$, meaning all 50 answers are identical. Under the
+heterogeneous-question null, a single independent pair has probability
+$6.4213\times10^{-15}$ of achieving $S=50$, and the expected number of
+such pairs among all $49{,}995{,}000$ comparisons is only
+$3.21\times10^{-7}$. This is decisive evidence of coordinated
+answering rather than chance agreement.
+\end{keyresult}
 
-
-
-
+\subsection{Interpretation}
+The conclusion is stronger than the small-sample $(5,10)$ result. In
+Task~2 the suspicious pair was an isolated maximum on a 25-question
+test. Here, five students share the same complete 50-question answer
+vector, producing a ten-edge clique at the absolute maximum possible
+similarity. The heterogeneous null model explicitly accounts for easy
+questions, so the result cannot be explained away by the test having
+high-accuracy columns. The only statistically coherent interpretation is
+that these five answer sheets were not generated independently.
 \end{document}
