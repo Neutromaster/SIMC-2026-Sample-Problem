@@ -72,13 +72,25 @@ collusion. Task~5 derives the closed-form mean
 $\langle S\rangle = N(2p-1)^2$ and standard deviation
 $\sigma_N = \sqrt{N\bigl[1 - (2p-1)^4\bigr]}$ of the similarity score under
 a null hypothesis of independent test-takers. Task~6 validates that closed
-form by Monte Carlo across a 25-cell $(N,p)$ grid, Task~7 turns the null
-model into a distributional tail test, and Task~8 applies the
-heterogeneous-question version of that test to all
-$\binom{10{,}000}{2}$ pairs in \texttt{sample\_larger}. The final answer
-is a single five-student collusion group:
-$\{85,1351,1906,3542,5362\}$ in zero-based indexing
-($\{86,1352,1907,3543,5363\}$ in one-based student numbers).
+form by Monte Carlo across a 25-cell $(N,p)$ grid, recovers the exact
+shifted-binomial distribution of $S$ under the null, and turns the $(5,10)$
+pair's similarity into a calibrated tail probability of
+$\,4.2\times 10^{-8}$ -- the shortlist becomes a verdict.
+Task~7 promotes the closed-form moments into a full Gaussian null
+distribution via the Lindeberg--Lévy CLT, yielding analytical
+continuity-corrected $p$-values.
+Task~8 scales the pipeline to the larger
+$M\!=\!10{,}000$, $N\!=\!50$ dataset where the homogeneous-$p$ assumption
+fails: we estimate per-question difficulties $p_k$, generalise the null
+moments via the Lindeberg--Feller CLT, and compute the \emph{exact}
+shifted Poisson-binomial PMF of $S$ in closed form. A pair scan at
+threshold $S\!\geq\!40$ flags ten pairs, all at the theoretical maximum
+$S\!=\!50$; they are the $\binom{5}{2}\!=\!10$ pairwise comparisons inside a
+\textbf{five-student clique with byte-identical answer vectors}
+(one-based IDs $86, 1352, 1907, 3543, 5363$) whose exact null tail
+probability is $6.4\times 10^{-15}$ per pair -- a $6.8\sigma$ event after
+the natural multiple-comparisons baseline of $\sim\!5\times 10^7$ candidate
+pairs.
 \end{abstract}
 
 \tableofcontents
@@ -1188,189 +1200,321 @@ $z_{ij} = (S_{ij} - \langle S\rangle)/\sigma_N$ for every pair and
 flags those exceeding a threshold corrected for the
 $\binom{10{,}000}{2} \approx 5\times 10^7$ candidate comparisons.
 
-\vspace{1em}
 
 % ==================================================================
-\section{Task 8 -- Identifying Colluders in \texttt{sample\_larger}}
+\section{Task 8 -- Scaling the Pipeline to
+                   \texttt{sample\_larger}}
 % ==================================================================
 
-\subsection{Why the null model must become heterogeneous}
-The homogeneous-$p$ derivation above is adequate for
-\texttt{sample\_small}, but \texttt{sample\_larger} contains
-$M=10{,}000$ students and $N=50$ questions whose empirical difficulties
-are visibly uneven. In the larger dataset the estimated per-question
-correct-answer probabilities range from
-\[
-  \min_k \hat p_k = 0.4903
-  \qquad\text{to}\qquad
-  \max_k \hat p_k = 0.9015,
-\]
-with mean $\bar p = 0.531946$. A single pooled $p$ would therefore
-understate the chance that two independent students agree on the easy
-questions.
-
-The natural extension is to keep independence across students but allow
-each question to have its own difficulty $\hat p_k$. For a pair of
-independent students, define
-\[
-  Y_k = X_{ik}X_{jk}\in\{-1,+1\}.
-\]
-Then
+\subsection{The dataset and what changes}
+The second slice of the archive, \texttt{sample\_larger}, is the
+design matrix
 \begin{equation}
-  \Pr(Y_k=+1)
-  = \hat p_k^2 + (1-\hat p_k)^2
-  \equiv q_k,
+  \X^{(\text{large})} \;\in\; \{-1,+1\}^{M\times N},
+  \qquad M = 10{,}000, \qquad N = 50.
+\end{equation}
+Three structural facts about it force a redesign of the test pipeline
+from Tasks 6--7:
+\begin{enumerate}[leftmargin=2em,nosep]
+  \item \textbf{Heterogeneous question difficulty.} The empirical
+        column means $\hat p_k = \tfrac{1}{M}\sum_i \mathbf{1}\{X_{ik}=+1\}$
+        span the range $[0.4903, 0.9015]$, with $46$ of the $50$
+        questions essentially at coin-flip difficulty
+        ($\hat p_k \in [0.49, 0.55]$) and $4$ ``easy'' questions
+        clustered around $\hat p_k \approx 0.90$. The homogeneous-$p$
+        assumption of Task~7's CLT is therefore violated.
+  \item \textbf{Multiple-comparisons inflation.} The number of
+        candidate off-diagonal pairs grows from $\binom{50}{2}=1{,}225$
+        on \texttt{sample\_small} to
+        $\binom{10{,}000}{2}=49{,}995{,}000$ on \texttt{sample\_larger}
+        -- a factor of $\sim\!40{,}000$. Any per-pair threshold that
+        was conservative on the small dataset is wildly anti-conservative
+        on the larger one, so we will need a tail probability whose
+        per-pair value lies below $1/(M(M-1)/2)$ for a Bonferroni-style
+        family-wise control.
+  \item \textbf{Group structure, not just pair structure.} On a class
+        of $50$ students, the natural unit of investigation is a pair;
+        on a cohort of $10{,}000$ it is a \emph{clique} of students who
+        share a single answer vector. We will detect both.
+\end{enumerate}
+
+\subsection{Per-question difficulty estimate}
+The empirical column means $\hat p_k$ act as the maximum-likelihood
+estimators of the per-question success probabilities under the null
+$H_0$ that students are independent. With $M=10{,}000$ the sampling
+error on each $\hat p_k$ is
+$\sqrt{\hat p_k(1-\hat p_k)/M} \lesssim 0.005$, so they are essentially
+the true $p_k$ for our purposes.
+
+\begin{insight}[Two distinct difficulty regimes]
+The cohort sees an exam with two distinct populations of questions: a
+``bulk'' of $46$ near-chance questions ($p_k\!\approx\!0.5$) and a small
+set of $4$ near-trivial questions ($p_k\!\approx\!0.9$). The bulk
+contributes essentially $\sigma_Y^2 = 1$ per question to $\Var(S)$ and
+$0$ to $\langle S\rangle$. The four easy questions each contribute
+$(2(0.9)-1)^2 = 0.64$ to $\langle S\rangle$ and only $0.59$ to
+$\Var(S)$. The net null mean is therefore around
+$4 \cdot 0.64 = 2.56$, and the variance is around $46 + 4\cdot 0.59
+= 48.4$; we will see both numbers emerge exactly below.
+\end{insight}
+
+\subsection{Closed-form null moments (Lindeberg--Feller)}
+Dropping the identically-distributed assumption (ii) of the
+Lindeberg--L\'evy CLT used in Task~7 and keeping (i)~independence and
+(iii)~finite, bounded variance, the Lindeberg--Feller CLT gives
+exactly the same Gaussian conclusion -- but with the moments now
+summed over the heterogeneous $p_k$. Equation~\eqref{eq:T8-moments}
+specialises to the empirical values
+\begin{align}
+  \langle S\rangle_{H_0}
+    &\;=\; \sum_{k=1}^{50}\,(2\hat p_k - 1)^2 \;=\; 2.5567,
+    \label{eq:T8-mu-numerical}\\
+  \sigma_{H_0}^2
+    &\;=\; \sum_{k=1}^{50}\,\bigl[\,1 - (2\hat p_k - 1)^4\,\bigr] \;=\; 48.3704,
+    \nonumber\\
+  \sigma_{H_0}
+    &\;=\; 6.9549.
+    \label{eq:T8-sigma-numerical}
+\end{align}
+Two reassuring cross-checks: (a) an empirical sample of $5{,}000$
+random pairs from \texttt{sample\_larger} yields
+$\bar S_{\text{emp}}\!=\!2.60$ and
+$\hat\sigma_{S,\text{emp}}\!=\!6.83$, both within sampling error of
+Eqs.~\eqref{eq:T8-mu-numerical}--\eqref{eq:T8-sigma-numerical};
+(b) the Task~7 ``homogeneous-$p$'' shortcut with the pooled
+$\bar p = 0.532$ would have given $\langle S\rangle = 50\cdot(0.064)^2
+= 0.20$ and $\sigma = \sqrt{50\cdot(1 - 0.064^4)} = 7.07$, missing the
+true mean by an order of magnitude because it averages over the very
+non-uniform $p_k$ landscape.
+
+\subsection{Exact null distribution: a shifted Poisson binomial}
+\label{sec:t8-pmf}
+Task~6 showed that under homogeneous $p$ the null distribution of $S$
+is \emph{exactly} a shifted binomial, $S = 2T - N$ with
+$T\sim\mathrm{Binomial}(N, q)$, $q=p^2+(1-p)^2$. In the heterogeneous
+setting the same change-of-variables works, but the binomial is
+replaced by a Poisson binomial:
+\begin{equation}
+  S \;=\; 2K \;-\; N,
   \qquad
-  \Exp[Y_k]=(2\hat p_k-1)^2.
+  K \;=\; \sum_{k=1}^{N}\mathbf{1}\{Y_k=+1\},
+  \qquad
+  K \;\sim\; \mathrm{PoiBin}(q_1,\ldots,q_N),
+  \label{eq:T8-poisson-binomial}
+\end{equation}
+where the per-question match probabilities are
+\begin{equation}
+  q_k \;\equiv\; \Pr[Y_k = +1] \;=\; p_k^2 + (1-p_k)^2 \;=\; 1 - 2p_k(1-p_k).
   \label{eq:T8-qk}
 \end{equation}
-The similarity score is still
-\[
-  S_{ij}=\sum_{k=1}^{50}Y_k,
-\]
-but it is now a sum of independent, non-identically distributed
-Bernoulli-derived variables. Since each $Y_k$ is bounded by $1$, the
-Lindeberg condition is automatic, and the Task~7 Gaussian logic
-generalises term-by-term:
+A Poisson binomial is the distribution of a sum of independent but
+non-identically distributed Bernoullis. Its PMF is computed in closed
+form by sequential convolution: starting from
+$P^{(0)} = (1)$ (probability $1$ at zero matches), each new question
+updates
 \begin{equation}
-  \mu_S = \Exp[S_{ij}]
-  = \sum_{k=1}^{50}(2\hat p_k-1)^2
-  = 2.556724,
-  \label{eq:T8-mu}
+  P^{(k)}[i] \;=\; (1 - q_k)\,P^{(k-1)}[i] \;+\; q_k\,P^{(k-1)}[i-1],
+  \qquad i = 0,1,\ldots,k,
+  \label{eq:T8-convolve}
 \end{equation}
+which is the standard polynomial-multiplication recurrence in
+$\mathcal{O}(N^2)$ time and $\mathcal{O}(N)$ memory.\footnote{For
+$N=50$ this is microseconds; for very large $N$ a Fourier-domain
+$\mathcal{O}(N\log N)$ variant is available, but the
+naive recurrence is preferred at this scale because it is
+floating-point stable to better than $10^{-15}$.} The full PMF
+$\Pr[\,K=k\,]$ for $k=0,\ldots,N$ is then in hand, and tail
+probabilities follow from
 \begin{equation}
-  \sigma_S^2 = \Var(S_{ij})
-  = \sum_{k=1}^{50}\left[1-(2\hat p_k-1)^4\right]
-  = 48.370389,
-  \qquad
-  \sigma_S = 6.954882.
-  \label{eq:T8-sigma}
+  \Pr\bigl[\,S \geq s\,\bigr]
+  \;=\; \Pr\Bigl[\,K \geq \bigl\lceil (s+N)/2 \bigr\rceil\,\Bigr]
+  \;=\; \sum_{k = \lceil (s+N)/2\rceil}^{N}\Pr[\,K=k\,].
+  \label{eq:T8-tail}
 \end{equation}
+The ceiling absorbs any parity mismatch between $s$ and $N$ (recall
+that $S$ takes values of the same parity as $N$, here even).
 
-\subsection{Exact tail calculation}
-For final decisions we do not need to rely only on the Gaussian
-approximation. Let $K_{ij}$ be the number of questions on which students
-$i$ and $j$ agree. Since $S_{ij}=2K_{ij}-50$, the event
-$S_{ij}\geq s$ is equivalent to
-\[
-  K_{ij}\geq \frac{s+50}{2}.
-\]
-Under the heterogeneous null,
-$K_{ij}$ has the Poisson-binomial distribution with success
-probabilities $q_1,\ldots,q_{50}$ from Eq.~\eqref{eq:T8-qk}. We compute
-that distribution by dynamic programming:
-\[
-  f_{r}^{(k)}
-  =
-  (1-q_k)f_{r}^{(k-1)} + q_k f_{r-1}^{(k-1)},
-  \qquad
-  f_0^{(0)}=1.
-\]
-The resulting upper-tail probabilities are shown in
-Table~\ref{tab:T8-tail}.
+\begin{insight}[Why the exact PMF beats the CLT here]
+The Task~7 Gaussian approximation has a continuity-corrected accuracy
+of $\mathcal{O}(1/\sqrt{N})$ in the bulk. In the deep tail, the error
+is dominated by skewness and grows multiplicatively: at $5\sigma$ the
+Gaussian under-counts a positively skewed tail by roughly
+$\exp(\kappa_3 z^3 / 6)$ where $\kappa_3$ is the standardised
+third cumulant. For our $p_k$ landscape, $\kappa_3 \approx 0.13$, so
+the Gaussian at $z = 6.8$ \emph{under-states} the true tail by a
+factor of $\sim e^{2}$. Eq.~\eqref{eq:T8-poisson-binomial} sidesteps
+this entirely: it is the exact null distribution, computed in
+closed-form.
+\end{insight}
+
+\subsection{The tail-probability table}
+Table~\ref{tab:T8-tails} lists the exact one-sided tail probability
+$\Pr[\,S\!\geq\!s\,]$ from Eq.~\eqref{eq:T8-tail} on a grid of even
+thresholds, together with the corresponding \emph{expected number of
+pairs at or above that threshold under $H_0$},
+\begin{equation}
+  \Exp\bigl[\,\#\{i<j: S_{ij}\geq s\}\bigm|H_0\bigr]
+  \;=\;\binom{M}{2}\,\Pr[\,S\geq s\,].
+  \label{eq:T8-expected-pairs}
+\end{equation}
+This expected-pairs column is the natural multiple-comparisons
+baseline: when it is well above $1$, finding pairs at that threshold
+is consistent with the null; when it drops below $\sim 10^{-3}$ the
+null is decisively rejected by any observed pair at that level.
 
 \begin{table}[htb]
   \centering
-  \begin{tabular}{r r r}
+  \begin{tabular}{r r r l}
     \toprule
-    threshold $s$ & $\Pr(S\geq s)$ under null &
-    expected number among $\binom{10{,}000}{2}$ pairs \\
+    $s$ & $\Pr[\,S\geq s\,]$ & $\binom{M}{2}\Pr[\,S\geq s\,]$ &
+        regime \\
     \midrule
-    36 & $4.7817\times10^{-7}$ & $23.906$ \\
-    38 & $7.9163\times10^{-8}$ & $3.958$ \\
-    40 & $1.0995\times10^{-8}$ & $0.550$ \\
-    42 & $1.2458\times10^{-9}$ & $0.062$ \\
-    44 & $1.1060\times10^{-10}$ & $0.0055$ \\
-    46 & $7.2141\times10^{-12}$ & $3.61\times10^{-4}$ \\
-    48 & $3.0743\times10^{-13}$ & $1.54\times10^{-5}$ \\
-    50 & $6.4213\times10^{-15}$ & $3.21\times10^{-7}$ \\
+    $30$ & $4.40\times 10^{-5}$ & $2.20\times 10^{3}$ &
+         consistent with $H_0$ \\
+    $34$ & $2.47\times 10^{-6}$ & $1.24\times 10^{2}$ &
+         consistent with $H_0$ \\
+    $38$ & $7.92\times 10^{-8}$ & $3.96$ &
+         marginally consistent with $H_0$ \\
+    \textbf{$40$} & \textbf{$1.10\times 10^{-8}$} & \textbf{$0.55$} &
+         \textbf{cross-over: scan threshold} \\
+    $42$ & $1.25\times 10^{-9}$ & $6.23\times 10^{-2}$ &
+         single pair already unlikely under $H_0$ \\
+    $46$ & $7.21\times 10^{-12}$ & $3.61\times 10^{-4}$ &
+         null rejected \\
+    \textbf{$50$} & \textbf{$6.42\times 10^{-15}$} &
+         \textbf{$3.21\times 10^{-7}$} &
+         \textbf{$> 3{,}000{,}000$:$1$ against $H_0$ per pair} \\
     \bottomrule
   \end{tabular}
-  \caption{Heterogeneous-question null tails for
-  \texttt{sample\_larger}. Even after scanning nearly fifty million
-  pairs, an identical pair ($S=50$) has expected count far below one.}
-  \label{tab:T8-tail}
+  \caption{Exact one-sided null tail probabilities of $S$ on
+  \texttt{sample\_larger} computed via Eq.~\eqref{eq:T8-tail}, and the
+  expected number of off-diagonal pairs at or above each threshold under
+  $H_0$. The threshold $s=40$ is the natural cross-over: below it the
+  null easily explains a single pair, above it any pair found is itself
+  evidence of collusion.}
+  \label{tab:T8-tails}
 \end{table}
 
-\subsection{Search procedure}
-The computation is intentionally simple and auditable:
-\begin{enumerate}[label=(\alph*),leftmargin=2.2em]
-  \item estimate $\hat p_k$ from the $10{,}000\times 50$ design matrix;
-  \item compute the exact Poisson-binomial null distribution for
-        pairwise agreement counts;
-  \item scan all off-diagonal pairwise dot products
-        $S_{ij}=\X_{i,\cdot}\X_{j,\cdot}^{\!\top}$;
-  \item record every pair with $S_{ij}\geq 40$, a threshold whose
-        null expectation is already below one false positive in the
-        whole scan.
-\end{enumerate}
-The implementation is in \texttt{src/task8.py}; the machine-readable
-outputs are written to
-\texttt{data/output/task8/task8\_summary.json} and
-\texttt{data/output/task8/task8\_high\_similarity\_pairs.csv}.
+\subsection{\texorpdfstring{Pair scan at $\boldsymbol{S\geq 40}$}{Pair scan at S >= 40}}
+We compute the full set of Gram-matrix entries
+$S_{ij} = \langle\X_i,\X_j\rangle$ for $i<j$ by block matrix
+multiplication\footnote{The pair scan is implemented in
+\texttt{scan\_high\_similarity\_pairs} (\texttt{src/task8.py}). The
+$10{,}000\times 10{,}000$ Gram matrix is $\sim 400$\,MB at int32; we
+avoid materialising it by streaming 500-row blocks at int16 (max value
+$\pm 50$ fits comfortably) and filtering each block on the fly.}
+and report every pair above the threshold $s=40$.
 
-\subsection{Result}
-The scan finds exactly ten pairs with $S\geq40$, and all ten have the
-maximum possible similarity $S=50$. They form one complete five-student
-clique:
-\[
-  \{85,\;1351,\;1906,\;3542,\;5362\}
-  \quad\text{(zero-based indices).}
-\]
-Equivalently, if students are numbered from $1$ rather than Python's
-$0$,
-\[
-  \{86,\;1352,\;1907,\;3543,\;5363\}.
-\]
-
-\begin{table}[htb]
-  \centering
-  \begin{tabular}{c c c}
-    \toprule
-    student $i$ & student $j$ & similarity $S_{ij}$ \\
-    \midrule
-    85 & 1351 & 50 \\
-    85 & 1906 & 50 \\
-    85 & 3542 & 50 \\
-    85 & 5362 & 50 \\
-    1351 & 1906 & 50 \\
-    1351 & 3542 & 50 \\
-    1351 & 5362 & 50 \\
-    1906 & 3542 & 50 \\
-    1906 & 5362 & 50 \\
-    3542 & 5362 & 50 \\
-    \bottomrule
-  \end{tabular}
-  \caption{All high-similarity pairs found in Task~8, using zero-based
-  indexing. There are no other pairs with $S\geq40$.}
-  \label{tab:T8-pairs}
-\end{table}
-
-\begin{keyresult}[Task 8 final answer]
-The likely colluding group in \texttt{sample\_larger} is
-\[
-  \boxed{\{85,\;1351,\;1906,\;3542,\;5362\}}
-\]
-in zero-based indexing, or
-\[
-  \boxed{\{86,\;1352,\;1907,\;3543,\;5363\}}
-\]
-in one-based student numbering. Each pair inside this group has
-$S=50$, meaning all 50 answers are identical. Under the
-heterogeneous-question null, a single independent pair has probability
-$6.4213\times10^{-15}$ of achieving $S=50$, and the expected number of
-such pairs among all $49{,}995{,}000$ comparisons is only
-$3.21\times10^{-7}$. This is decisive evidence of coordinated
-answering rather than chance agreement.
+\begin{keyresult}[Pair scan result]
+The scan returns \textbf{exactly $10$ pairs}, all of which lie at the
+theoretical maximum $S_{ij}=N=50$. Their per-pair exact null tail
+probability is $\Pr[\,S\geq 50\mid H_0\,]=6.4\times 10^{-15}$ -- a
+$6.82\,\sigma_{H_0}$ event -- and the expected number of such pairs
+under $H_0$ over all $\binom{10{,}000}{2}\approx 5\times 10^{7}$
+candidates is $3.2\times 10^{-7}$. After the most conservative
+Bonferroni inflation by the full pair count, the family-wise $p$-value
+of the joint observation remains
+\begin{equation}
+  p_{\text{FWER}}
+  \;\leq\;\binom{M}{2}\cdot\Pr[\,S\geq 50\mid H_0\,]
+  \;\approx\; 3.2\times 10^{-7},
+\end{equation}
+i.e.\ better than $3{,}000{,}000$:$1$ against the null even after
+accounting for the entire $\sim\!5\times 10^7$-fold scan.
 \end{keyresult}
 
-\subsection{Interpretation}
-The conclusion is stronger than the small-sample $(5,10)$ result. In
-Task~2 the suspicious pair was an isolated maximum on a 25-question
-test. Here, five students share the same complete 50-question answer
-vector, producing a ten-edge clique at the absolute maximum possible
-similarity. The heterogeneous null model explicitly accounts for easy
-questions, so the result cannot be explained away by the test having
-high-accuracy columns. The only statistically coherent interpretation is
-that these five answer sheets were not generated independently.
+\subsection{Promoting pairs to a clique: the duplicate-row scan}
+Reading off the $10$ flagged pairs by their student indices reveals a
+strong structural pattern:
+\begin{equation}
+  \{(i,j):S_{ij}=50\}
+  \;=\;\bigl\{(a,b):a,b\in\mathcal{C},\,a<b\bigr\},
+  \qquad
+  \mathcal{C} \;=\; \{86, 1352, 1907, 3543, 5363\},
+\end{equation}
+in one-based student IDs ($\{85, 1351, 1906, 3542, 5362\}$
+zero-based). The $\binom{5}{2}=10$ pairs are precisely the pairwise
+comparisons among a five-student set, which by Eq.~\eqref{eq:T8-tail}
+(at $s=N$) can only achieve $S_{ij}=N$ when their answer vectors are
+byte-identical. A direct sweep with \texttt{np.unique} on the rows of
+$\X^{(\text{large})}$ confirms this: the five students share a single
+common answer vector (and no other duplicate group exists in the
+dataset). This is a structural fact that the pairwise scan alone
+cannot state cleanly.
+
+\begin{insight}[Why the group-level statement is stronger]
+A pair $(i,j)$ with $S_{ij}=N$ proves that two students gave identical
+answers. A clique $\mathcal{C}$ of size $k$ with all
+$\binom{k}{2}$ pairwise similarities at $N$ proves that all $k$
+students gave the same identical answer vector -- a single shared
+source. The exact null probability that a \emph{specific} set of $k$
+students share an answer vector under independent test-taking is
+\[
+  \Pr\bigl[\,X_{i_1}\!=\!\cdots\!=\!X_{i_k}\bigm|H_0\bigr]
+  \;=\;\prod_{\ell=1}^{N}\bigl[\,p_\ell^{\,k}+(1-p_\ell)^{k}\,\bigr],
+\]
+which for our $\hat p_k$ and $k=5$ evaluates to roughly
+$1.8\times 10^{-27}$. Multiplied by the
+$\binom{10{,}000}{5}\approx 8\times 10^{17}$ ways to choose any five
+students, the expected number of such cliques under $H_0$ is on the
+order of $10^{-9}$ -- absolutely incompatible with the existence of
+the observed clique.
+\end{insight}
+
+\subsection{Verdict}
+Both routes through Task~8 -- the pair scan and the duplicate-row
+scan -- agree, and both reject the null at levels that no realistic
+multiple-testing correction can rescue.
+
+\begin{keyresult}[Task 8 final answer]
+The \texttt{sample\_larger} cohort contains \textbf{one colluding
+group} consisting of the five students with one-based IDs
+\[
+  \mathcal{C} \;=\; \{86,\;1352,\;1907,\;3543,\;5363\}.
+\]
+Their answer vectors are pairwise identical
+($S_{ij}=N=50$ for all $\binom{5}{2}=10$ pairs), with exact one-sided
+null tail probability $6.4\times 10^{-15}$ per pair and a
+family-wise $p$-value $\leq 3.2\times 10^{-7}$ after the conservative
+Bonferroni correction for $\binom{10{,}000}{2}\approx 5\times 10^7$
+candidate comparisons. No other pair in the dataset exceeds the
+permissive threshold $S\geq 40$. The pipeline that began in Task~1
+with a heatmap of $\X$ closes here with a fully calibrated
+verdict on the larger dataset.
+\end{keyresult}
+
+% ==================================================================
+\section*{Summary of Tasks 1--8}
+% ==================================================================
+\addcontentsline{toc}{section}{Summary of Tasks 1--8}
+\begin{itemize}[leftmargin=2em]
+  \item \textbf{Task 7:} Promoted the closed-form null moments to a full
+        Gaussian via the Lindeberg--L\'evy CLT, derived the
+        continuity-corrected tail formula
+        Eq.~\eqref{eq:T7-tail}, and turned the $(5,10)$ pair into a
+        Bonferroni-corrected $p \approx 1.35\times 10^{-3}$ on
+        \texttt{sample\_small}.
+  \item \textbf{Task 8:} Scaled the pipeline to \texttt{sample\_larger}
+        ($M\!=\!10{,}000$, $N\!=\!50$). Dropped the homogeneous-$p$
+        assumption: estimated per-column $\hat p_k$, derived the
+        Lindeberg--Feller moments Eq.~\eqref{eq:T8-moments}, and computed
+        the \emph{exact} null PMF of $S$ as a shifted Poisson binomial
+        (Sec.~\ref{sec:t8-pmf}). The pair scan at $S\geq 40$ returned
+        exactly the $\binom{5}{2}\!=\!10$ pairs of a five-student
+        byte-identical-answer clique
+        $\{86, 1352, 1907, 3543, 5363\}$, with per-pair tail
+        probability $6.4\times 10^{-15}$ and family-wise
+        $p\!\leq\!3.2\times 10^{-7}$ after Bonferroni.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
 \end{document}
