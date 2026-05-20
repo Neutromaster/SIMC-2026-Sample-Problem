@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.13)  18 MAY 2026 16:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.13)  20 MAY 2026 08:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1042,261 +1042,277 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 (report.toc [1
 
-{C:/Users/DELL/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}])
+{C:/Users/DELL/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 51.
+)
 \tf@toc=\write5
 \openout5 = `report.toc'.
 
-<../data/output/task1/task1_design_matrix.png, id=282, 803.28105pt x 658.74104p
+ [2]
+<../data/output/task1/task1_design_matrix.png, id=341, 803.28105pt x 658.74104p
 t>
 File: ../data/output/task1/task1_design_matrix.png Graphic file (type png)
 <use ../data/output/task1/task1_design_matrix.png>
 Package pdftex.def Info: ../data/output/task1/task1_design_matrix.png  used on 
-input line 113.
+input line 128.
 (pdftex.def)             Requested size: 430.31812pt x 352.90042pt.
- [2] [3 <../data/output/task1/task1_design_matrix.png>]
-<../data/output/task2/task2_similarity_matrix.png, id=304, 875.55106pt x 586.47
+ [3 <../data/output/task1/task1_design_matrix.png>]
+<../data/output/task2/task2_similarity_matrix.png, id=352, 875.55106pt x 586.47
 105pt>
 File: ../data/output/task2/task2_similarity_matrix.png Graphic file (type png)
 <use ../data/output/task2/task2_similarity_matrix.png>
 Package pdftex.def Info: ../data/output/task2/task2_similarity_matrix.png  used
- on input line 180.
+ on input line 195.
 (pdftex.def)             Requested size: 430.31812pt x 288.24136pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 196.
+(hyperref)                removing `math shift' on input line 211.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 196.
+(hyperref)                removing `math shift' on input line 211.
 
-[4 <../data/output/task2/task2_similarity_matrix.png>]
-<../data/output/task3/task3_similarity_K03.png, id=314, 875.55106pt x 586.47105
+[4]
+<../data/output/task3/task3_similarity_K03.png, id=365, 875.55106pt x 586.47105
 pt>
 File: ../data/output/task3/task3_similarity_K03.png Graphic file (type png)
 <use ../data/output/task3/task3_similarity_K03.png>
 Package pdftex.def Info: ../data/output/task3/task3_similarity_K03.png  used on
- input line 220.
+ input line 235.
 (pdftex.def)             Requested size: 144.95303pt x 97.0857pt.
-<../data/output/task3/task3_similarity_K12.png, id=315, 875.55106pt x 586.47105
+<../data/output/task3/task3_similarity_K12.png, id=366, 875.55106pt x 586.47105
 pt>
 File: ../data/output/task3/task3_similarity_K12.png Graphic file (type png)
 <use ../data/output/task3/task3_similarity_K12.png>
 Package pdftex.def Info: ../data/output/task3/task3_similarity_K12.png  used on
- input line 224.
+ input line 239.
 (pdftex.def)             Requested size: 144.95303pt x 97.0857pt.
-<../data/output/task3/task3_similarity_K40.png, id=316, 875.55106pt x 586.47105
+<../data/output/task3/task3_similarity_K40.png, id=367, 875.55106pt x 586.47105
 pt>
 File: ../data/output/task3/task3_similarity_K40.png Graphic file (type png)
 <use ../data/output/task3/task3_similarity_K40.png>
 Package pdftex.def Info: ../data/output/task3/task3_similarity_K40.png  used on
- input line 228.
+ input line 243.
 (pdftex.def)             Requested size: 144.95303pt x 97.0857pt.
- [5 <../data/output/task3/task3_similarity_K03.png> <../data/output/task3/task3
-_similarity_K12.png> <../data/output/task3/task3_similarity_K40.png>]
-<../data/output/task3/task3_silhouette_curve.png, id=332, 586.47105pt x 333.526
+ [5 <../data/output/task2/task2_similarity_matrix.png> <../data/output/task3/ta
+sk3_similarity_K03.png> <../data/output/task3/task3_similarity_K12.png> <../dat
+a/output/task3/task3_similarity_K40.png>]
+<../data/output/task3/task3_silhouette_curve.png, id=382, 586.47105pt x 333.526
 05pt>
 File: ../data/output/task3/task3_silhouette_curve.png Graphic file (type png)
 <use ../data/output/task3/task3_silhouette_curve.png>
 Package pdftex.def Info: ../data/output/task3/task3_silhouette_curve.png  used 
-on input line 302.
+on input line 317.
 (pdftex.def)             Requested size: 249.13371pt x 141.67798pt.
-<../data/output/task3/similarity_best_task3.png, id=333, 875.55106pt x 586.4710
+<../data/output/task3/similarity_best_task3.png, id=383, 875.55106pt x 586.4710
 5pt>
 File: ../data/output/task3/similarity_best_task3.png Graphic file (type png)
 <use ../data/output/task3/similarity_best_task3.png>
 Package pdftex.def Info: ../data/output/task3/similarity_best_task3.png  used o
-n input line 305.
+n input line 320.
 (pdftex.def)             Requested size: 190.24568pt x 127.43114pt.
- [6 <../data/output/task3/task3_silhouette_curve.png> <../data/output/task3/sim
-ilarity_best_task3.png>] [7]
+ [6] [7 <../data/output/task3/task3_silhouette_curve.png> <../data/output/task3
+/similarity_best_task3.png>]
 [8]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 532.
+(hyperref)                removing `math shift' on input line 547.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 532.
+(hyperref)                removing `subscript' on input line 547.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 532.
+(hyperref)                removing `math shift' on input line 547.
 
 [9]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 557.
+(hyperref)                removing `math shift' on input line 572.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 557.
+(hyperref)                removing `subscript' on input line 572.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 557.
+(hyperref)                removing `math shift' on input line 572.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 579.
+(hyperref)                removing `math shift' on input line 594.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 579.
+(hyperref)                removing `math shift' on input line 594.
 
 [10] [11]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 718.
+(hyperref)                removing `math shift' on input line 733.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 718.
+(hyperref)                removing `math shift' on input line 733.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 718.
+(hyperref)                removing `math shift' on input line 733.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 718.
+(hyperref)                removing `math shift' on input line 733.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 718.
+(hyperref)                removing `math shift' on input line 733.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 718.
+(hyperref)                removing `superscript' on input line 733.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 718.
+(hyperref)                removing `math shift' on input line 733.
 
-<../data/output/task6/task6_convergence_N100_p05.png, id=418, 622.60605pt x 369
+<../data/output/task6/task6_convergence_N100_p05.png, id=466, 622.60605pt x 369
 .66106pt>
 File: ../data/output/task6/task6_convergence_N100_p05.png Graphic file (type pn
 g)
 <use ../data/output/task6/task6_convergence_N100_p05.png>
 Package pdftex.def Info: ../data/output/task6/task6_convergence_N100_p05.png  u
-sed on input line 752.
+sed on input line 767.
 (pdftex.def)             Requested size: 362.37569pt x 215.15376pt.
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 759.
+(hyperref)                removing `math shift' on input line 774.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 759.
+(hyperref)                removing `math shift' on input line 774.
 
-<../data/output/task6/task6_grid_validation.png, id=420, 947.82104pt x 384.1150
+[12]
+<../data/output/task6/task6_grid_validation.png, id=482, 947.82104pt x 384.1150
 5pt>
 File: ../data/output/task6/task6_grid_validation.png Graphic file (type png)
 <use ../data/output/task6/task6_grid_validation.png>
 Package pdftex.def Info: ../data/output/task6/task6_grid_validation.png  used o
-n input line 773.
+n input line 788.
 (pdftex.def)             Requested size: 439.37941pt x 178.0607pt.
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 783.
-
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 783.
+(hyperref)                removing `math shift' on input line 798.
 
-[12]
-<../data/output/task6/task6_distribution_N100_p05.png, id=438, 767.14606pt x 41
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 798.
+
+[13 <../data/output/task6/task6_convergence_N100_p05.png> <../data/output/task6
+/task6_grid_validation.png>]
+<../data/output/task6/task6_distribution_N100_p05.png, id=495, 767.14606pt x 41
 3.02306pt>
 File: ../data/output/task6/task6_distribution_N100_p05.png Graphic file (type p
 ng)
 <use ../data/output/task6/task6_distribution_N100_p05.png>
 Package pdftex.def Info: ../data/output/task6/task6_distribution_N100_p05.png  
-used on input line 814.
+used on input line 829.
 (pdftex.def)             Requested size: 421.25682pt x 226.80415pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 837.
+(hyperref)                removing `math shift' on input line 852.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 837.
+(hyperref)                removing `math shift' on input line 852.
 
-[13 <../data/output/task6/task6_convergence_N100_p05.png>] [14 <../data/output/
-task6/task6_grid_validation.png>]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 915.
-
+[14 <../data/output/task6/task6_distribution_N100_p05.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 915.
+(hyperref)                removing `math shift' on input line 930.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 935.
+(hyperref)                removing `math shift' on input line 930.
+
+[15]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 950.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 935.
+(hyperref)                removing `math shift' on input line 950.
 
-[15 <../data/output/task6/task6_distribution_N100_p05.png>] [16]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1111.
-
+[16] [17]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1111.
+(hyperref)                removing `math shift' on input line 1126.
 
-[17] [18] (report.aux)
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1126.
+
+[18]
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 1206.
+
+ [19] [20] [21] [22] [23] (report.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: BE439263609D803A70D0E67ADA0A335A;10879.
+(rerunfilecheck)             Checksum: F15A4A08039D005BAC727646B049B313;13188.
  ) 
 Here is how much of TeX's memory you used:
- 34210 strings out of 467871
- 736183 string characters out of 5418860
- 1126710 words of memory out of 5000000
- 62463 multiletter control sequences out of 15000+600000
- 646691 words of font info for 109 fonts, out of 8000000 for 9000
+ 34292 strings out of 467871
+ 737250 string characters out of 5418860
+ 1126678 words of memory out of 5000000
+ 62505 multiletter control sequences out of 15000+600000
+ 649493 words of font info for 120 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  98i,13n,108p,545b,1422s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1
 095.pk><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
-/cm/cmbx10.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/
-amsfonts/cm/cmbx12.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1
-/public/amsfonts/cm/cmbxti10.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX/f
-onts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/DELL/AppData/Local/Programs/
-MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/DELL/AppData/Local/P
-rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/DELL/AppData
-/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/DELL/
-AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/User
-s/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><
-C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi
-b10.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
-s/cm/cmr10.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/
-amsfonts/cm/cmr12.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/
-public/amsfonts/cm/cmr7.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/
-type1/public/amsfonts/cm/cmr8.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX/
-fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/DELL/AppData/Local/Programs
-/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/DELL/AppData/Local/P
-rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/DELL/AppData/
-Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/DELL/
-AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Use
-rs/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam1
-0.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
-symbols/msbm10.pfb>
-Output written on report.pdf (18 pages, 1845689 bytes).
+/cm/cmbsy10.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public
+/amsfonts/cm/cmbx10.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type
+1/public/amsfonts/cm/cmbx12.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fo
+nts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/DELL/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/DELL/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/DELL/AppDat
+a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/DEL
+L/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Us
+ers/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb
+><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
+mi8.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
+s/cm/cmmi9.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/
+amsfonts/cm/cmmib10.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type
+1/public/amsfonts/cm/cmr10.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fon
+ts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/DELL/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/DELL/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/DELL/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/DELL/AppData/
+Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/DELL/Ap
+pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users
+/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C
+:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7
+.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
+m/cmsy8.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
+fonts/cm/cmsy9.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/pub
+lic/amsfonts/cm/cmti10.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmtt10.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Users/DELL/AppData/Local/Program
+s/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt9.pfb><C:/Users/DELL/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/DELL/A
+ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on report.pdf (23 pages, 1967029 bytes).
 PDF statistics:
- 640 PDF objects out of 1000 (max. 8388607)
- 143 named destinations out of 1000 (max. 500000)
- 559 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 787 PDF objects out of 1000 (max. 8388607)
+ 174 named destinations out of 1000 (max. 500000)
+ 639 words of extra memory for PDF output out of 10000 (max. 10000000)
 
